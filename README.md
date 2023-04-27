@@ -1,6 +1,7 @@
 # Plantilla para TP Integrador usando JFlex y JCup (Java)
 
 ## [Consigna del tp](https://github.com/Lenguajes-y-Compiladores-UnLaM/consignas-tp)
+### Tema especial: ConcatenarConRecorte
 
 ## Prerequisitos.
 
