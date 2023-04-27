@@ -1,7 +1,16 @@
 # Plantilla para TP Integrador usando JFlex y JCup (Java)
 
 ## [Consigna del tp](https://github.com/Lenguajes-y-Compiladores-UnLaM/consignas-tp)
-### Tema especial: ConcatenarConRecorte
+## Tema especial
+
+### ConcatenarConRecorte
+Esta función toma tres parámetros: cadena1 y cadena2, que son las dos cadenas de texto que deseas concatenar, y posicionRecorte, que es la posición en la que se desea recortar cadena1 antes de concatenarla con cadena2. La función comprueba que posicionRecorte esté dentro del rango válido de posiciones de cadena1 y de cadena2, y si no lo está, devolverá un mensaje de error. Luego se recortaran ambas cadenas. Finalmente, la función devuelve la cadena concatenada resultante.
+
+**Ejemplo:**
+
+```
+cadenaResultante = ConcatenarConRecorte("Hola", "Mundo", 2) // Devuelve "lando".
+```
 
 ## Prerequisitos.
 
