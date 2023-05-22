@@ -18,49 +18,49 @@ import static lyc.compiler.constants.Constants.MAX_LENGTH;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
-@Disabled
+//@Disabled
 public class LexerTest {
 
   private Lexer lexer;
 
 
-  @Test
-  public void comment() throws Exception{
-    scan("/*This is a comment*/");
-    assertThat(nextToken()).isEqualTo(ParserSym.EOF);
-  }
+//  @Test
+//  public void comment() throws Exception{
+//    scan("/*This is a comment*/");
+//    assertThat(nextToken()).isEqualTo(ParserSym.EOF);
+//  }
+//
+//  @Test
+//  public void invalidStringConstantLength() {
+//    assertThrows(InvalidLengthException.class, () -> {
+//      scan("\"%s\"".formatted(getRandomString()));
+//      nextToken();
+//    });
+//  }
+//
+//  @Test
+//  public void invalidIdLength() {
+//    assertThrows(InvalidLengthException.class, () -> {
+//      scan(getRandomString());
+//      nextToken();
+//    });
+//  }
 
-  @Test
-  public void invalidStringConstantLength() {
-    assertThrows(InvalidLengthException.class, () -> {
-      scan("\"%s\"".formatted(getRandomString()));
-      nextToken();
-    });
-  }
-
-  @Test
-  public void invalidIdLength() {
-    assertThrows(InvalidLengthException.class, () -> {
-      scan(getRandomString());
-      nextToken();
-    });
-  }
-
-  @Test
-  public void invalidPositiveIntegerConstantValue() {
-    assertThrows(InvalidIntegerException.class, () -> {
-      scan("%d".formatted(9223372036854775807L));
-      nextToken();
-    });
-  }
-
-  @Test
-  public void invalidNegativeIntegerConstantValue() {
-    assertThrows(InvalidIntegerException.class, () -> {
-      scan("%d".formatted(-9223372036854775807L));
-      nextToken();
-    });
-  }
+//  @Test
+//  public void invalidPositiveIntegerConstantValue() {
+//    assertThrows(InvalidIntegerException.class, () -> {
+//      scan("%d".formatted(9223372036854775807L));
+//      nextToken();
+//    });
+//  }
+//
+//  @Test
+//  public void invalidNegativeIntegerConstantValue() {
+//    assertThrows(InvalidIntegerException.class, () -> {
+//      scan("%d".formatted(-9223372036854775807L));
+//      nextToken();
+//    });
+//  }
 
 
   @Test
