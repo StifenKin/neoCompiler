@@ -26,6 +26,33 @@ import static lyc.compiler.constants.Constants.*;
   private Symbol symbol(int type, Object value) {
     return new Symbol(type, yyline, yycolumn, value);
   }
+
+  public void writeSimbolTable(){
+      try {
+                   String ruta = "./SimbolTable.txt";
+                   File file = new File(ruta);
+
+                   // Validate if exists
+                   if (!file.exists()) {
+                       file.createNewFile();
+                   }
+
+                   FileWriter fw = new FileWriter(file);
+                   BufferedWriter bw = new BufferedWriter(fw);
+                   bw.write("Name "+ "\t  "+ "Type "+ "\t  "+ "Value " + " \t   "+ "Length "+ "\n");
+                   bw.newLine();
+                   for(int i=0;i<elemento.size();i++)
+                     {
+                        //bw.write(elemento.get(i).getNombre() + "\t " + elemento.get(i).getTipo() + "\t " + elemento.get(i).getValor() + "\t " + elemento.get(i).getLongitud() +"\n");
+                        bw.newLine();
+                     }
+
+                   bw.close();
+            }
+               catch (Exception e) {
+                   e.printStackTrace();
+               }
+           }
 %}
 
 
@@ -38,38 +65,38 @@ Plus = "+"
 Mult = "*"
 Sub = "-"
 Div = "/"
+Assign = "="
 
 /* logic operators */
-Equal  "=="
-NotEqual "!="
-LessThan  "<"
-LessEqual "<="
-GreaterThan  ">"
-GreaterEqual ">="
-Not "!"
-And "&&"
-Or  "||"
+Equal = "=="
+NotEqual = "!="
+LessThan = "<"
+LessEqual = "<="
+GreaterThan = ">"
+GreaterEqual = ">="
+Not = "!"
+And = "&&"
+Or  = "||"
 
 /* flow control */
-If    "if"
-Else  "else"
-While "while"
+If  =  "if"
+Else = "else"
+While = "while"
 
 /* declaracion */
-Var  "var"
-As   "as2"
-Coma ","
+Var = "var"
+As  = "as2"
+Coma = ","
 
 /* tipos de dato */
-Int      "int"
-Real     "real"
-String_T "string"
+Int    =  "int"
+Real    = "real"
+String_T = "string"
 
 /* fin de instruccion */
-EndStmt ";"
-NewLine "\n"
+EndStmt = ";"
+NewLine = "\n"
 
-Assign = "="
 OpenBracket = "("
 CloseBracket = ")"
 OpenKey = "{"
@@ -84,7 +111,7 @@ WhiteSpace = {LineTerminator} | {Identation}
 Identifier = {Letter} ({Letter}|{Digit})*
 IntegerConstant = {Digit}+
 RealConstant = ({Digit}+ "." {Digit}*)|({Digit}* "." {Digit}+)
-Comment = "\*\/.*\/\*"
+Comment = "{Div}{Mult} (Letter | Digit | WhiteSpace)* {Mult}{Div}"
 
 %%
 
@@ -92,12 +119,13 @@ Comment = "\*\/.*\/\*"
 /* keywords */
 
 <YYINITIAL> {
+
   /* identifiers */
   {Identifier}                             { return symbol(ParserSym.IDENTIFIER, yytext()); }
+
   /* Constants */
   {IntegerConstant}                        { return symbol(ParserSym.INTEGER_CONSTANT, yytext()); }
-  {RealConstant}                        { return symbol(ParserSym.REAL_CONSTANT, yytext()); }
-  {Comment}                        { return symbol(ParserSym.COMMENT, yytext()); }
+  {RealConstant}                            { return symbol(ParserSym.REAL_CONSTANT, yytext()); }
 
   /* operators */
   {Plus}                                    { return symbol(ParserSym.PLUS); }
@@ -107,8 +135,8 @@ Comment = "\*\/.*\/\*"
 
 /* tipos de dato */
   {Int}                                    { return symbol(ParserSym.INT); }
-  {Real}                                    { return symbol(ParserSym.REAL); }
-  {String_T}                                    { return symbol(ParserSym.STRING); }
+  {Real}                                   { return symbol(ParserSym.REAL); }
+  {String_T}                               { return symbol(ParserSym.STRING); }
 
   /* flow control */
   {If}                                    { return symbol(ParserSym.IF); }
@@ -129,7 +157,7 @@ Comment = "\*\/.*\/\*"
   {CloseCorchete}                           { return symbol(ParserSym.CLOSE_CORCHETE); }
 
   /* fin de instruccion */
-  {EndStmt}                            { return symbol(ParserSym.ENDSTMT); }
+  {EndStmt}                            { return symbol(ParserSym.END_STMT); }
   {NewLine}                            { return symbol(ParserSym.NEW_LINE); }
 
   /* logic operators */

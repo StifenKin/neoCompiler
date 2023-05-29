@@ -4,7 +4,6 @@ import java_cup.runtime.*;
 
 class Parser;
 
-
 // Terminals
 terminal ASSIG;
 terminal PLUS;
@@ -18,6 +17,7 @@ terminal CLOSE_KEY;
 terminal OPEN_CORCHETE;
 terminal CLOSE_CORCHETE;
 terminal INTEGER_CONSTANT;
+terminal REAL_CONSTANT;
 terminal IDENTIFIER;
 terminal EQUAL;
 terminal NOT_EQUAL;
@@ -39,6 +39,7 @@ terminal REAL;
 terminal STRING;
 terminal END_STMT;
 terminal NEW_LINE;
+terminal COMMENT;
 
 // Non Terminals
 non terminal sentence;

@@ -24,12 +24,12 @@ public class LexerTest {
   private Lexer lexer;
 
 
-//  @Test
-//  public void comment() throws Exception{
-//    scan("/*This is a comment*/");
-//    assertThat(nextToken()).isEqualTo(ParserSym.EOF);
-//  }
-//
+  @Test
+  public void comment() throws Exception{
+    scan("/*This is a comment*/");
+    assertThat(nextToken()).isEqualTo(ParserSym.EOF);
+  }
+
 //  @Test
 //  public void invalidStringConstantLength() {
 //    assertThrows(InvalidLengthException.class, () -> {
